@@ -7,9 +7,9 @@ Hexo theme: Apollo
 [Demo](http://joyceim.github.io/)
 
 
-#Installation
+##Installation
 
-##Install
+###Install
 
 ``` bash
 $ git clone git@github.com:joyceim/hexo-theme-apollo.git themes/apollo
@@ -17,14 +17,14 @@ $ git clone git@github.com:joyceim/hexo-theme-apollo.git themes/apollo
 
 **Landscape requires Hexo 2.4 and above.**
 
-##Update
+###Update
 
 ``` bash
 cd themes/apollo
 git pull
 ```
 
-# Configuration
+##Configuration
 
 ``` yml
 # Header
