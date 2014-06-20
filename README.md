@@ -10,14 +10,18 @@ Hexo theme: Apollo
 
 ##Install
 
-    $ git clone git@github.com:joyceim/hexo-theme-apollo.git themes/apollo
+``` bash
+$ git clone git@github.com:joyceim/hexo-theme-apollo.git themes/apollo
+```
 
 **Landscape requires Hexo 2.4 and above.**
 
 ##Update
 
-    cd themes/apollo
-    git pull
+``` bash
+cd themes/apollo
+git pull
+```
 
 # Configuration
 
