@@ -21,19 +21,21 @@ Hexo theme: Apollo
 
 # Configuration
 
-    # Header
-    menu:
-      Home: /
-      Archives: /archives
-    rss: /atom.xml
-    
-    # Content
-    excerpt_link: Read More
-    fancybox: true
-    
-    # Miscellaneous
-    google_analytics:
-    favicon: /favicon.png
+``` yml
+# Header
+menu:
+    Home: /
+    Archives: /archives
+rss: /atom.xml
+
+# Content
+excerpt_link: Read More
+fancybox: true
+
+# Miscellaneous
+google_analytics:
+favicon: /favicon.png
+```
 
 - **menu** - Navigation menu
 - **rss** - RSS link
