@@ -3,7 +3,7 @@ Hexo theme: Apollo
 
 **This hexo theme is modified from SANOGRAPHIX.NET**
 
-[Original](https://github.com/sanographix/tumblr/tree/master/apollo) (Tumblr theme)
+[Original](https://github.com/sanographix/tumblr/tree/master/apollo) <small>(Tumblr theme)</small>  
 [Demo](http://joyceim.github.io/)
 
 
