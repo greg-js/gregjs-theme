@@ -15,7 +15,7 @@ Hexo theme: Apollo
 $ git clone git@github.com:joyceim/hexo-theme-apollo.git themes/apollo
 ```
 
-**Landscape requires Hexo 2.4 and above.**
+**Apollo requires Hexo 2.4 and above.**
 
 ###Update
 
