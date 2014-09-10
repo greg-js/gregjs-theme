@@ -4,7 +4,7 @@ Hexo theme: Apollo
 **This hexo theme is modified from SANOGRAPHIX.NET**
 
 [Original](https://github.com/sanographix/tumblr/tree/master/apollo) (Tumblr theme)  
-[Demo](http://joyceim.github.io/)
+[Demo](http://xxxxxly.in/uploads/apollo-home.jpg)(Screenshot)
 
 
 ##Installation
