@@ -1,8 +1,11 @@
 # Header
 menu:
-  Home: /
-  Archives: /archives
-rss: /atom.xml
+  Home: http://www.gregjs.com
+  Blog: http://blog.gregjs.com
+  Archives: http://blog.gregjs.com/archives
+  Bio: http://blog.gregjs.com/about
+  Projects: http://blog.gregjs.com/projects
+rss: http://blog.gregjs.com/atom.xml
 
 # Content
 excerpt_link: Read More
