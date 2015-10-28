@@ -185,10 +185,8 @@
     border-top: 3px solid #d5d5d5
 
 .entry-meta-footer
-  font-size: 85%
   color: color-footer
   line-height: 1.5
-  margin-bottom: 1.5em
   a
     color: color-footer
     &:hover
@@ -200,23 +198,27 @@
   span
     line-height: line-height
 
-  .category a
-    margin-left: 5px
-    margin-right: 5px
-    &:first-child
-      margin-left: 0
-    &:last-child
-      margin-right: 0
+  .category span
+    font-size: 100%
+    &:before
+      content: "category: "
 
   .meta
     margin-bottom: .7em
 
+.meta-separator
+  width: 30%
+  border: 0
+  border-top: 1px dashed color-footer
+
 .article-tag-list
+
+  font-size: 85%
   padding: 0
 
 .article-tag-list-item
-  float: left
   margin-right: 10px
+  display: inline
 
   &:before
     content: "#"

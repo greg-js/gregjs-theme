@@ -9,6 +9,15 @@
 				<a href="<%- post.permalink %>#disqus_thread" class="article-comment-link">Comments</a>
 			<% } %>
 		</div>
+    <hr class="meta-separator">
+    <div class="entry-meta-footer">
+      <span class="category">
+        <%- partial('post/category') %>
+      </span>
+      <span class="tags">
+        <%- partial('post/tag') %>
+      </span>
+    </div>
 	</footer>
 	<%- partial('post/gallery') %>
 	<header class="entry-header">
@@ -26,16 +35,6 @@
     	<%- post.content %>
     <% } %>
 	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				<%- partial('post/category') %>
-			</span>
-			<span class="tags">
-				<%- partial('post/tag') %>
-			</span>
-		</div>
-	</footer>
 	<% if (!index){ %>
     <%- partial('post/nav') %>
   <% } %>
