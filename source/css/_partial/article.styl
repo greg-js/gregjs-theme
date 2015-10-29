@@ -7,11 +7,11 @@
   padding-left: 200px
 
 .post
-  margin-bottom: 5em
+  margin-bottom: 2.5em
   position: relative
 
   .entry-header
-    margin-bottom: 2em
+    margin-bottom: 0.65em
 
   .entry-title
     font-weight: bold
@@ -69,7 +69,7 @@
     max-width: 100%
     height: auto
     display: block
-    margin: auto
+    margin: 0.65em auto 0.65em auto
   a[title*="Flickr"] img
     height: auto!important
   h1, h2, h3, h4, h5, h6
@@ -185,8 +185,11 @@
     border-top: 3px solid #d5d5d5
 
 .entry-meta-footer
+  font-family: 'Source Code Pro'
+  margin-top: 2em
   color: color-footer
   line-height: 1.5
+
   a
     color: color-footer
     &:hover
@@ -200,25 +203,21 @@
 
   .category span
     font-size: 100%
-    &:before
-      content: "category: "
+    background: lightgrey
+    border: 1px solid #eaeaea
+    padding: 1px 5px 1px 5px
 
   .meta
     margin-bottom: .7em
 
-.meta-separator
-  width: 30%
-  border: 0
-  border-top: 1px dashed color-footer
+  .article-tag-list
+    margin-top: 0.5em
+    font-size: 90%
+    padding: 0
 
-.article-tag-list
+  .article-tag-list-item
+    margin-right: 10px
+    display: inline
 
-  font-size: 85%
-  padding: 0
-
-.article-tag-list-item
-  margin-right: 10px
-  display: inline
-
-  &:before
-    content: "#"
+    &:before
+      content: "#"
