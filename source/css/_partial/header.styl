@@ -14,20 +14,29 @@
 .blog-title
   float: left
   display: inline-block
-  font-size: 120%
-  font-weight: bold
+  font-size: 140%
+  font-weight: 700
+  border-top: 4px double lightgrey
+  border-bottom: 4px double lightgrey
+  border-radius: 45%
   padding-bottom: .2em
   letter-spacing: .2em
   margin: 10px 0
-  border-bottom: 5px solid color-title
-  &:hover
-    border-color: color-link
-    a
-      color: color-link
+  font-family: font-mono
+  transition: color 1.5s, border-color 1.5s
+  webkit-transition: color 1.5s, border-color 1.5s
   a
     position: relative
     left: .1em
     padding: .4em 0
+    transition: color 1.5s, border-color 1.5s
+    webkit-transition: color 1.5s, border-color 1.5s
+  &:hover
+    transition: color 1.5s, border-color 1.5s, font-size 1.5s
+    webkit-transition: color 1.5s, border-color 1.5s
+    border-color: darkgrey
+    a
+      color: color-link
 
 .mobile-nav-panel
   display: none
@@ -41,11 +50,11 @@
     background-size: 18px 17px
 
 .nav
-  margin: 10px 0
+  margin: 14px 0
   font-size: 85%
-  text-transform: uppercase
   float: right
   position: relative
+  font-family: font-mono
   ul
     display: block
     *zoom: 1
@@ -60,7 +69,7 @@
       content: "."
   li
     float: left
-    margin: .3em 0 .3em 2em
+    margin: .3em 0 .3em 1.6em
     img
       vertical-align: middle
 

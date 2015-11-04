@@ -18,6 +18,18 @@
     $('.fancybox').fancybox();
   }
 
+  $('.nav a').first().hover(function() {
+    this.text = 'home';
+  }, function() {
+    this.text = '../';
+  });
+
+  $('.nav a:eq(1)').hover(function() {
+    this.text = 'blog';
+  }, function() {
+    this.text = './';
+  });
+
   // Mobile nav
 
   $('.mobile-nav-panel').click(function() {

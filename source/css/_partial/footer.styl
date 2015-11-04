@@ -15,21 +15,29 @@
     clear: both
     content: "."
   .footer-blog-title
+    border-top: 4px double lightgrey
+    border-bottom: 4px double lightgrey
+    border-radius: 45%
     float: left
     display: inline-block
-    text-transform: uppercase
+    font-family: font-mono
     font-size: 120%
     padding-bottom: .2em
     letter-spacing: .2em
     margin: 1em 1.5em 0 0
-    border-bottom: 3px solid color-footer
+    transition: color 1.5s, border-color 1.5s
+    webkit-transition: color 1.5s, border-color 1.5s
     a
       position: relative
       left: .1em
       padding: .4em 0
       color: color-footer
+      transition: color 1.5s, border-color 1.5s
+      webkit-transition: color 1.5s, border-color 1.5s
     &:hover
-      border-color: color-link
+      border-color: darkgrey
+      transition: color 1.5s, border-color 1.5s
+      webkit-transition: color 1.5s, border-color 1.5s
       a
         color: color-link
   .copyright
