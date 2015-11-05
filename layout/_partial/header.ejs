@@ -3,12 +3,11 @@
 </div>
 <header id="header">
 	<h1 class="blog-title">
-		<a href="<%- config.root %>"><%= config.title %></a>
+		<a href="<%- config.root %>"><span class="blog-title-greg">greg</span><span class="blog-title-JS">JS</span></a>
 	</h1>
 	<nav class="nav">
 		<ul>
 			<% for (var i in theme.menu){ %><li><a href="<%- theme.menu[i] %>"><%= i %></a></li><% } %>
-			<% if (theme.rss){ %><li><a href="<%- theme.rss %>" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li><% } %>
 		</ul>
 	</nav>
 </header>

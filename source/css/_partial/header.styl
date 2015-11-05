@@ -1,8 +1,9 @@
 #header
   display: block
-  margin: 4em 0
+  margin: 0.75em 0 2em 0
   position: relative
   *zoom: 1
+  border-bottom: 1px dashed grey
   &:after
     display: block
     visibility: hidden
@@ -15,7 +16,6 @@
   float: left
   display: inline-block
   font-size: 140%
-  font-weight: 700
   border-top: 4px double lightgrey
   border-bottom: 4px double lightgrey
   border-radius: 45%
@@ -23,20 +23,26 @@
   letter-spacing: .2em
   margin: 10px 0
   font-family: font-mono
-  transition: color 1.5s, border-color 1.5s
-  webkit-transition: color 1.5s, border-color 1.5s
+  transition: color 1.5s, border-color 2.5s
+  webkit-transition: color 1.5s, border-color 2.5s
   a
     position: relative
     left: .1em
     padding: .4em 0
-    transition: color 1.5s, border-color 1.5s
-    webkit-transition: color 1.5s, border-color 1.5s
+    transition: color 1.5s, border-color 2.5s
+    webkit-transition: color 1.5s, border-color 2.5s
   &:hover
-    transition: color 1.5s, border-color 1.5s, font-size 1.5s
-    webkit-transition: color 1.5s, border-color 1.5s
+    transition: color 1.5s, border-color 2.5s
+    webkit-transition: color 1.5s, border-color 2.5s
     border-color: darkgrey
     a
       color: color-link
+
+.blog-title-greg
+  font-weight: normal
+.blog-title-JS
+  font-weight: bold
+  color: #97a93d
 
 .mobile-nav-panel
   display: none
@@ -51,7 +57,7 @@
 
 .nav
   margin: 14px 0
-  font-size: 85%
+  font-size: 94%
   float: right
   position: relative
   font-family: font-mono
@@ -69,12 +75,11 @@
       content: "."
   li
     float: left
-    margin: .3em 0 .3em 1.6em
+    margin: .3em 0 .3em 2.3em
     img
       vertical-align: middle
 
   a
-    font-weight: bold
     color: color-default
     &:hover
       color: color-link

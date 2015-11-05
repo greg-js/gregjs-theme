@@ -5,6 +5,7 @@ menu:
   archives/: http://blog.gregjs.com/archives
   bio/: http://blog.gregjs.com/about
   projects/: http://blog.gregjs.com/projects
+  rss/: http://blog.gregjs.com/atom.xml
 rss: http://blog.gregjs.com/atom.xml
 
 # Content
