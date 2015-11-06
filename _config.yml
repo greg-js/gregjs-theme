@@ -15,4 +15,4 @@ fancybox: true
 # Miscellaneous
 google_analytics: UA-69518818-1
 favicon: /favicon.png
-highlight_theme: "night eighties"
+highlight_theme: "hybrid"

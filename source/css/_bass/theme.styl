@@ -1,5 +1,18 @@
 $theme_config = hexo-config("highlight_theme")
 
+if $theme_config == "hybrid"
+  highlight-background   = #1d1f21
+  highlight-selection    = #d6d6d6
+  highlight-foreground   = #c5c8c6
+  highlight-yellow       = #f0c674
+  highlight-comment      = #707880
+  highlight-red          = #cc6666
+  highlight-green        = #b5bd68
+  highlight-purple       = #b294bb
+  highlight-blue         = #81a2be
+  highlight-aqua         = #8abeb7
+  highlight-orange       = #de935f
+  highlight-current-line = #efefef
 
 if $theme_config == "normal"
   highlight-background   = #f7f7f7
@@ -70,3 +83,13 @@ if $theme_config == "night bright"
   highlight-aqua         = #70c0b1
   highlight-blue         = #7aa6da
   highlight-purple       = #c397d8
+
+$code-block
+  background: highlight-background
+  letter-spacing: -1px
+  margin: 10px 0
+  padding: 15px
+  overflow: auto
+  font-size: 90%
+  color: highlight-foreground
+  line-height: 1.3em
