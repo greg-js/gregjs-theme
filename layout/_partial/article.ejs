@@ -3,17 +3,11 @@
 		<span class="meta-elements date">
 			<%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
 		</span>
-<!--		<span class="meta-elements author"><%= config.author %></span> -->
-<!--		<div class="commentscount"> -->
-<!--			<% if (post.comments && config.disqus_shortname){ %> -->
-<!--				<a href="<%- post.permalink %>#disqus_thread" class="article-comment-link">Comments</a> -->
-<!--			<% } %> -->
-<!--		</div> -->
-    <div class="entry-meta-footer">
-      <span class="category">
+    <div class="meta-elements category-tags">
+      <span class="article-category category">
         <%- partial('post/category') %>
       </span>
-      <span class="tags">
+      <div class="tags">
         <%- partial('post/tag') %>
       </span>
     </div>
