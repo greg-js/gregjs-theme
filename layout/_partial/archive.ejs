@@ -13,7 +13,7 @@
 <% } else { %>
   <div class="archive">
     <% page.posts.each(function(item){ %>
-      <article class="<%= item.layout %> post">
+      <article class="<%= item.layout %> archived">
         <footer class="entry-meta-header">
           <span class="meta-elements date">
             <time datetime="<%= item.date.toDate().toISOString() %>"><a href="<%- config.root %><%- item.path %>"><%= item.date.format(config.date_format) %></a></time>
@@ -38,5 +38,13 @@
         </div>
       </article>
     <% }); %>
+  <% if (page.total > 1){ %>
+    <nav id="page-nav">
+      <%- paginator({
+        prev_text: '&laquo; Prev',
+        next_text: 'Next &raquo;'
+      }) %>
+    </nav>
+  <% } %>
   </div>
 <% } %>
