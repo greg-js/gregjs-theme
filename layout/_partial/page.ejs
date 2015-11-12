@@ -1,0 +1,12 @@
+<article id="<%= page.layout %>-<%= page.title %>" class="page">
+	<%- partial('post/gallery') %>
+	<header class="entry-header">
+		<%- partial('post/title', {class_name: 'article-title'}) %>
+	</header>
+	<div class="entry-content">
+    <%- page.content %>
+	</div>
+	<% if (!index){ %>
+    <%- partial('post/nav') %>
+  <% } %>
+</article>
