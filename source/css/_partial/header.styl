@@ -1,9 +1,14 @@
 #header
   display: block
-  margin: 0.75em 0 2em 0
-  position: relative
+  position: fixed
   *zoom: 1
   border-bottom: 1px dashed grey
+  top: 0
+  width: 70%
+  left: 50%
+  margin-left: -35%
+  z-index: 1
+  background: color-background
   &:after
     display: block
     visibility: hidden
@@ -96,62 +101,3 @@
   position: relative
   cursor: pointer
 
-#nav-rss-link
-  &:before
-    content: "\f09e"
-
-#nav-search-btn
-  &:before
-    content: "\f002"
-
-#search-form-wrap
-  display: none
-  position: absolute
-  top: 10px
-  width: 150px
-  height: 30px
-  right: 280px
-  opacity: 0
-  transition: 0.2s ease-out
-  &.on
-    display: block
-    opacity: 1
-    right: 55px
-  @media (max-width:767px)
-    width: 100%
-    left: -100%
-
-.search-form
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-  background: #fff
-  padding: 3px 15px
-  border-radius: 15px
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3)
-
-.search-form-input
-  border: none
-  background: none
-  color: color-default
-  letter-spacing: 1px
-  width: 90%
-  font: 13px font-sans
-  outline: none
-  &::-webkit-search-results-decoration
-  &::-webkit-search-cancel-button
-    -webkit-appearance: none
-
-.search-form-submit
-  position: absolute
-  top: 50%
-  right: 10px
-  margin-top: -7px
-  font: 13px font-icon
-  border: none
-  background: none
-  color: #bbb
-  cursor: pointer
-  &:hover, &:focus
-    color: #777
