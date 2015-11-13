@@ -18,6 +18,7 @@
     $('.fancybox').fancybox();
   }
 
+  // top nav
   $('.nav a').first().hover(function() {
     this.text = 'home';
   }, function() {
@@ -30,8 +31,18 @@
     this.text = './';
   });
 
-  // Mobile nav
+  $('.menu-top').on('click', 'li', function(e) {
+    var $sub = $(this).find('.submenu');
+    if ($sub.length) {
+      e.preventDefault();
+      $sub.toggleClass('active');
+      $(this).on('mouseleave', function() {
+        $sub.removeClass('active');
+      });
+    }
+  });
 
+  // Mobile nav
   $('.mobile-nav-panel').click(function() {
     $('.nav').toggleClass('active');
   });

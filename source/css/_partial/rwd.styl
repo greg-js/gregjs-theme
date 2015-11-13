@@ -84,11 +84,18 @@
           border-bottom: 1px solid #677174
           text-align: left
 
-  #search-form-wrap
-    display: none
-
-  #nav-search-btn, #nav-rss-link
-    display: none !important
+  .submenu
+    position: relative
+    background: #4f5759
+    a
+      padding: 0.3em 1.5em !important
+    &.active
+      height: auto
+      overflow: visible
+      transition: all .2s ease-out
+    li
+      &:hover
+        background: #4f5759
 
   #header
     width: 100%
@@ -112,8 +119,6 @@
     .meta-elements
       display: inline
       margin-right: 1em
-    .commentscount
-      display: none
 
   .category-tags
     margin-top: 1em
@@ -139,21 +144,4 @@
   .pagenation span,.pagenation a
     padding: 5px
     margin: 0
-
-  .mb-search
-    margin-top: 3em
-    margin-bottom: 0
-    display: initial
-    input
-      background: #fff
-      font-family: font-sans
-      font-size: 15px
-      padding: 5px 10px
-      border-bottom: 2px solid color-border !important
-      border: 0
-      width: 100%
-      box-sizing: border-box
-      color: color-meta
-      &:focus
-        color: color-default
 

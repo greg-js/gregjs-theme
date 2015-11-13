@@ -6,8 +6,31 @@
 		<a href="<%- config.root %>"><span class="blog-title-greg">greg</span><span class="blog-title-JS">JS</span></a>
 	</h1>
 	<nav class="nav">
-		<ul>
-			<% for (var i in theme.menu){ %><li><a href="<%- theme.menu[i] %>"><%= i %></a></li><% } %>
+		<ul class="menu-top">
+      <li class="menu-item"><a href="http://www.gregjs.com">../</a></li>
+      <li class="menu-item"><a href="http://blog.gregjs.com">./</a></li>
+      <li class="menu-item">
+        <a href="?=">about/</a>
+        <ul class="submenu">
+          <a href="http://www.gregjs.com/about"><li>bio/</li></a>
+          <a href="#"><li>cv/</li></a>
+          <a href="#"><li>competencies/</li></a>
+          <a href="#"><li>hire-me/</li></a>
+          <a href="#"><li>contact/</li></a>
+        </ul>
+      </li>
+      <li class="menu-item">
+        <a href="">projects/</a>
+        <ul class="submenu">
+          <a href="#"><li>hexo-easy-edit</li></a>
+          <a href="#"><li>blog</li></a>
+          <a href="#"><li>expressapp</li></a>
+          <a href="#"><li>greddit</li></a>
+          <a href="#"><li>weather</li></a>
+        </ul>
+      </li>
+      <li class="menu-item"><a href="http://www.gregjs.com">archives/</a></li>
+      <li class="menu-item"><a href="http://www.gregjs.com">rss/</a></li>
 		</ul>
 	</nav>
 </header>

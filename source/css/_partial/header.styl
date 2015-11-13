@@ -9,6 +9,7 @@
   margin-left: -35%
   z-index: 1
   background: color-background
+  background: rgba(221,221,221,0.92)
   &:after
     display: block
     visibility: hidden
@@ -100,4 +101,27 @@
   padding: 20px 8px
   position: relative
   cursor: pointer
+
+.submenu
+  position: absolute
+  margin: 0 0 0.5em 0
+  padding: 0
+  z-index: 2
+  background: color-background
+  background: rgba(221,221,221,0.85)
+  height: 0
+  visibility: hidden
+  transition: height .8s ease-out
+  &.active
+    visibility: visible
+    height: auto
+    overflow: visible
+  li
+    display: block
+    float: none
+    margin: 0
+    padding: 0.25em
+    &:hover
+      background: grey
+      background: rgba(178,178,178,0.85)
 
