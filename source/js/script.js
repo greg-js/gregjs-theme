@@ -31,12 +31,12 @@
     this.text = './';
   });
 
-  $('.menu-top').on('click', 'li', function(e) {
-    var $sub = $(this).find('.submenu');
+  $('.menu-top').on('click', '.menu-item-submenu', function(e) {
+    var $sub = $(this).parent().find('.submenu');
     if ($sub.length) {
       e.preventDefault();
       $sub.toggleClass('active');
-      $(this).on('mouseleave', function() {
+      $(this).parent().on('mouseleave', function() {
         $sub.removeClass('active');
       });
     }
