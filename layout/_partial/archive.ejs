@@ -17,25 +17,25 @@
     <div class="archive">
       <% page.posts.each(function(item){ %>
         <article class="<%= item.layout %> archived">
-          <footer class="entry-meta-header">
-            <span class="meta-elements date">
-              <time datetime="<%= item.date.toDate().toISOString() %>"><a href="<%- config.root %><%- item.path %>"><%= item.date.format(config.date_format) %></a></time>
-            </span>
-          </footer>
           <div class="entry-content">
+            <footer class="entry-meta-header archive-left">
+              <span class="meta-elements date">
+                <time datetime="<%= item.date.toDate().toISOString() %>"><a href="<%- config.root %><%- item.path %>"><%= item.date.format(config.date_format) %></a></time>
+              </span>
+            </footer>
             <header>
               <% if (item.title){ %>
                 <% if (item.link){ %>
                   <% if (item.title){ %>
-                    <h1 class="title link"><a href="<%- item.link %>" target="_blank"><%= item.title %></a></h1>
+                    <h4 class="title link"><a href="<%- item.link %>" target="_blank"><%= item.title %></a></h4>
                   <% } else { %>
-                    <h1 class="title link"><a href="<%- item.link %>" target="_blank"><%= item.link %></a></h1>
+                    <h4 class="title link"><a href="<%- item.link %>" target="_blank"><%= item.link %></a></h4>
                   <% } %>
                 <% } else { %>
-                  <h1><a href="<%- config.root %><%- item.path %>"><%= item.title %></a></h1>
+                  <h4><a href="<%- config.root %><%- item.path %>"><%= item.title %></a></h4>
                 <% } %>
               <% } else { %>
-                  <h1>(No title)</h1>
+                  <h4>(No title)</h4>
               <% } %>
             </header>
           </div>
