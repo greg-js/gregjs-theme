@@ -1,0 +1,47 @@
+<div class="front-top">
+  <div class="jumbo">
+    <p><%= word %>!</p>
+    <p class="small">I'm gregJS and this is my home sweet home on the interwebs. I write code and blog about JavaScript, GNU/Linux and vim. And I'm looking for work in Manchester, UK!</p>
+    <img src="../images/pic.jpg" class="pic" />
+  </div>
+</div>
+
+<div class="front-segment">
+  <h2 class="front-segment-lead-right">My recent blog posts:</h2>
+  <table>
+    <thead>
+      <th>Category</th>
+      <th>Title</th>
+      <th class="front-table-date">Date</th>
+    </thead>
+    <tbody>
+      <% page.posts.slice(0,5).each(function(item){ %>
+        <tr class="front-archived">
+          <td><span class="front-table-category"><a href="/categories/<%- item.categories.data[0].name %>"><%= item.categories.data[0].name %></a></span></td>
+          <td><% if (item.title){ %>
+            <% if (item.link){ %>
+              <% if (item.title){ %>
+                <span class="front-table-link"><a href="<%- item.link %>" target="_blank"><%= item.title %></a></span>
+              <% } else { %>
+                <span class="front-table-link"><a href="<%- item.link %>" target="_blank"><%= item.link %></a></span>
+              <% } %>
+            <% } else { %>
+              <span class="front-table-link"><a href="<%- config.root %><%- item.path %>"><%= item.title %></a></span>
+            <% } %>
+          <% } else { %>
+              <span>(No title)</span>
+          <% } %></td>
+        <td class="front-table-date"><time class="front-table-date" datetime="<%= item.date.toDate().toISOString() %>"><%= item.date.format(config.date_format) %></time></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <p class="front-segment-lead-right">Check out <a href="/blog">my blog</a> for <strong><%- site.posts.length - 5 %></strong> more articles on</p>
+  <div class="front-tagcloud"><%- tagcloud({min_font: 14, max_font: 40, color: true, amount: 100, start_color: "#33a6b8", end_color: "#092f35"}) %></div>
+</div>
+
+<div class="front-segment">
+  <h2 class="front-segment-lead-left">A little more about me</h2>
+  <p class="front-bio">I'm just a guy who's passionate about programming in general and JavaScript, Linux and vim in particular. I left my old career as a freelance writer and now I'm working towards finding employment in the tech industry.</p>
+  <p class="front-bio">Most of my working days are spent reading, coding and snooping around on GitHub. Read more about me on <a href="/about">my bio page</a>, check me out on <a href="https://github.com/greg-js">GitHub</a> and <a href="http://www.codewars.com/users/wdgreg">CodeWars</a> (though I haven't been there in a while, I must admit) or <a href="mailto:greg@gregjs.com?subject=Hey Greg">get in touch with me</a>!</p>
+</div>
