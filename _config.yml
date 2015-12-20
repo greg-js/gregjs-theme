@@ -1,11 +1,11 @@
 # Header
 menu:
-  ../: http://www.gregjs.com
-  ./: http://blog.gregjs.com
-  archives/: http://blog.gregjs.com/archives
-  bio/: http://blog.gregjs.com/about
-  projects/: http://blog.gregjs.com/projects
-  rss/: http://blog.gregjs.com/atom.xml
+  home: http://www.gregjs.com
+  blog: http://www.gregjs.com/blog
+  about: http://blog.gregjs.com/about
+  projects: http://blog.gregjs.com/projects
+  archives: http://blog.gregjs.com/archives
+  rss: http://blog.gregjs.com/atom.xml
 rss: http://blog.gregjs.com/atom.xml
 
 # Content
