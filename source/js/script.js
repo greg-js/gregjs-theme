@@ -23,18 +23,6 @@
   }
 
   // top nav
-  $('.nav a').first().hover(function hoverHome() {
-    this.text = 'home';
-  }, function changeLook() {
-    this.text = '../';
-  });
-
-  $('.nav a:eq(1)').hover(function hoverBlog() {
-    this.text = 'blog';
-  }, function changeLook() {
-    this.text = './';
-  });
-
   $('.menu-top').on('click', '.menu-item-submenu', function onClick(e) {
     var $sub = $(this).parent().find('.submenu');
     if ($sub.length) {
