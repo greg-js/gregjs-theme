@@ -14,5 +14,5 @@ fancybox: true
 
 # Miscellaneous
 google_analytics: UA-69518818-1
-favicon: /favicon.png
+favicon: /images/favicon.png
 highlight_theme: "hybrid"
