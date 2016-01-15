@@ -13,43 +13,42 @@
     <% } %>
   </div>
 <% } else { %>
-  <div id="main">
-    <div class="archive">
-      <% page.posts.each(function(item){ %>
-        <div class="<%= item.layout %> archived">
-          <div class="entry-content">
-            <footer class="entry-meta-header archive-left">
-              <span class="meta-elements date">
-                <time datetime="<%= item.date.toDate().toISOString() %>"><a href="<%- config.root %><%- item.path %>"><%= item.date.format(config.date_format) %></a></time>
-              </span>
-            </footer>
-            <header>
-              <% if (item.title){ %>
-                <% if (item.link){ %>
-                  <% if (item.title){ %>
-                    <h4 class="title link"><a href="<%- item.link %>" target="_blank"><%= item.title %></a></h4>
-                  <% } else { %>
-                    <h4 class="title link"><a href="<%- item.link %>" target="_blank"><%= item.link %></a></h4>
-                  <% } %>
+  <div class="archive">
+    <table>
+      <thead>
+        <th>Category</th>
+        <th>Title</th>
+        <th class="front-table-date">Date</th>
+      </thead>
+      <tbody>
+        <% page.posts.each(function(item){ %>
+          <tr class="front-archived">
+            <td><span class="front-table-category"><a href="/categories/<%- item.categories.data[0].name %>"><%= item.categories.data[0].name %></a></span></td>
+            <td><% if (item.title){ %>
+              <% if (item.link){ %>
+                <% if (item.title){ %>
+                  <span class="front-table-link"><a href="<%- item.link %>" target="_blank"><%= item.title %></a></span>
                 <% } else { %>
-                  <h4><a href="<%- config.root %><%- item.path %>"><%= item.title %></a></h4>
+                  <span class="front-table-link"><a href="<%- item.link %>" target="_blank"><%= item.link %></a></span>
                 <% } %>
               <% } else { %>
-                  <h4>(No title)</h4>
+                <span class="front-table-link"><a href="<%- config.root %><%- item.path %>"><%= item.title %></a></span>
               <% } %>
-            </header>
-          </div>
-        </div >
-      <% }); %>
-      <% if (page.total > 1){ %>
-        <nav id="page-nav">
-          <%- paginator({
-            prev_text: '&laquo; Prev',
-            next_text: 'Next &raquo;',
-            show_all: true
-          }) %>
-        </nav>
-      <% } %>
-    </div>
+            <% } else { %>
+                <span>(No title)</span>
+            <% } %></td>
+          <td class="front-table-date"><time class="front-table-date" datetime="<%= item.date.toDate().toISOString() %>"><%= item.date.format(config.date_format) %></time></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
   </div>
+  <% if (page.total > 1){ %>
+    <nav id="page-nav">
+      <%- paginator({
+        prev_text: '&laquo; Prev',
+        next_text: 'Next &raquo;'
+      }) %>
+    </nav>
+  <% } %>
 <% } %>
