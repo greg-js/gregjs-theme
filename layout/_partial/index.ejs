@@ -7,7 +7,7 @@
 </div>
 
 <div class="front-segment">
-  <h2 class="front-segment-lead-right">My recent blog posts:</h2>
+  <h2 class="front-segment-lead-right"><a href="/blog" style="color:inherit">My recent blog posts</a></h2>
   <table>
     <thead>
       <th>Category</th>
@@ -15,7 +15,7 @@
       <th class="front-table-date">Date</th>
     </thead>
     <tbody>
-      <% page.posts.slice(0,5).each(function(item){ %>
+      <% page.posts.slice(0,10).each(function(item){ %>
         <tr class="front-archived">
           <td><span class="front-table-category"><a href="/categories/<%- item.categories.data[0].name %>"><%= item.categories.data[0].name %></a></span></td>
           <td><% if (item.title){ %>
@@ -36,7 +36,7 @@
       <% }); %>
     </tbody>
   </table>
-  <p class="front-segment-lead-right">Go read <a href="/blog">my blog</a> for <strong><%- site.posts.length - 5 %></strong> more articles on</p>
+  <p class="front-segment-lead-right">Visit <a href="/blog">my blog</a> for <strong><%- site.posts.length - 10 %></strong> more articles on</p>
   <div class="front-tagcloud"><%- tagcloud({min_font: 14, max_font: 40, color: true, amount: 100, start_color: "#33a6b8", end_color: "#092f35"}) %></div>
 </div>
 
