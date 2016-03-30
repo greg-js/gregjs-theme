@@ -1,12 +1,12 @@
 # Header
 menu:
-  home: http://www.gregjs.com
-  blog: http://www.gregjs.com/blog
-  about: http://blog.gregjs.com/about
-  projects: http://blog.gregjs.com/projects
-  archives: http://blog.gregjs.com/archives
-  rss: http://blog.gregjs.com/atom.xml
-rss: http://blog.gregjs.com/atom.xml
+  home: https://gregjs.com
+  blog: https://gregjs.com/blog
+  about: https://gregjs.com/about
+  projects: https://gregjs.com/projects
+  archives: https://gregjs.com/archives
+  rss: https://gregjs.com/atom.xml
+rss: https://gregjs.com/atom.xml
 
 # Content
 excerpt_link: Read More
