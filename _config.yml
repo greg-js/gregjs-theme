@@ -1,6 +1,5 @@
 # Header
 menu:
-  home: https://gregjs.com
   blog: https://gregjs.com/blog
   about: https://gregjs.com/about
   projects: https://gregjs.com/projects
@@ -10,7 +9,8 @@ rss: https://gregjs.com/atom.xml
 
 # Content
 excerpt_link: Read More
-fancybox: true
+fancybox: false # TODO: reimplement with preact
+webpack: true
 
 # Miscellaneous
 google_analytics: UA-69518818-1
