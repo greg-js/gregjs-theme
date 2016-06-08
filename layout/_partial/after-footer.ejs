@@ -14,11 +14,11 @@
 </script>
 <% } %>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<% if (theme.webpack){ %>
+<%- js('js/app') %>
+<% } %>
 
 <% if (theme.fancybox){ %>
 <link rel="stylesheet" property="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
 <script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
 <% } %>
-
-<%- js('js/script') %>
