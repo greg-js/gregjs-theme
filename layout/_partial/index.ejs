@@ -1,19 +1,5 @@
-<div class="front-top">
-  <div class="jumbo">
-    <p><%= word %>!</p>
-    <p class="small">I'm gregJS and this is my home sweet home on the interwebs. I write code and blog about JavaScript, GNU/Linux and vim. And I'm looking for work in Manchester, UK!</p>
-    <img src="../images/pic.jpg" class="pic" />
-  </div>
-</div>
-
 <div class="front-segment">
-  <h2 class="front-segment-lead-right"><a href="/blog" style="color:inherit">My recent blog posts</a></h2>
   <table>
-    <thead>
-      <th>Category</th>
-      <th>Title</th>
-      <th class="front-table-date">Date</th>
-    </thead>
     <tbody>
       <% page.posts.slice(0,10).each(function(item){ %>
         <tr class="front-archived">
@@ -36,12 +22,21 @@
       <% }); %>
     </tbody>
   </table>
-  <p class="front-segment-lead-right">Visit <a href="/blog">my blog</a> for <strong><%- site.posts.length - 10 %></strong> more articles on</p>
+  <% if (page.total > 1){ %>
+    <nav id="page-nav">
+      <%- paginator({
+        prev_text: '&laquo; Prev',
+        next_text: 'Next &raquo;'
+      }) %>
+    </nav>
+  <% } %>
   <div class="front-tagcloud"><%- tagcloud({min_font: 14, max_font: 40, color: true, amount: 100, start_color: "#33a6b8", end_color: "#092f35"}) %></div>
 </div>
 
-<div class="front-segment">
-  <h2 class="front-segment-lead-left">A little more about me</h2>
-  <p class="front-bio">I'm just a guy who's passionate about programming in general and JavaScript, Linux and vim in particular. I left my old career as a freelance writer and now I'm working towards finding employment in the tech industry.</p>
-  <p class="front-bio">Most of my working days are spent reading, coding and snooping around on GitHub. Read more about me on <a href="/about">my bio page</a>, check me out on <a href="https://github.com/greg-js">GitHub</a> and <a href="http://www.codewars.com/users/wdgreg">CodeWars</a> (though I haven't been there in a while, I must admit) or <a href="mailto:greg@gregjs.com?subject=Hey Greg">get in touch with me</a>!</p>
+<div class="front-bottom">
+  <div class="jumbo">
+    <p class="small">I write code and blog about JavaScript, GNU/Linux and vim.</p>
+    <img src="../images/pic.jpg" class="pic" />
+  </div>
 </div>
+
