@@ -4,7 +4,7 @@ import ArchivedPost from './components/archived-post';
 require('es6-promise').polyfill();
 require('universal-fetch');
 
-const main = document.querySelector('#main');
+const mainArchive = document.querySelector('#main-archive');
 const archive = document.querySelector('.archive');
 
 class Archive extends Component {
@@ -68,11 +68,14 @@ class Archive extends Component {
   render() {
 
     return (
-      <div class='main-archive'>
+      <div class='archive'>
+        <p>
+          <em>I'm currently working on this, apologies for the somewhat wonky functionality right now. Expect an update by June 16/17.</em>
+        </p>
         {this.state.posts.length ? this.renderPosts(this.state.posts) : null}
       </div>
     );
   }
 }
 
-render(<Archive />, main, archive);
+render(<Archive />, mainArchive, archive);
