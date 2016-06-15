@@ -1,10 +1,13 @@
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './themes/apollo-like/webpack/app.js',
+  entry: {
+    app: './themes/apollo-like/webpack/app.js',
+    archive: './themes/apollo-like/webpack/archive.js'
+  },
   output: {
     path: './themes/apollo-like/source/js',
-    filename: 'app.js'
+    filename: '[name].js'
   },
   module: {
     loaders: [{
@@ -21,6 +24,10 @@ module.exports = {
       output: {
         comments: false
       }
-    })
-  ]
+    }),
+    new webpack.optimize.DedupePlugin()
+  ],
+  externals: {
+    preact: 'preact'
+  }
 };

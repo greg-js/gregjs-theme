@@ -11,13 +11,6 @@
   background: rgba(221,221,221,0.92)
   a
     transition: color 1s
-  &:after
-    display: block
-    visibility: hidden
-    font-size: 0
-    height: 0
-    clear: both
-    content: "."
 
 .blog-title
   float: left
@@ -71,17 +64,9 @@
   position: relative
   font-family: font-mono
   ul
-    display: block
     *zoom: 1
     margin: 0
     padding: 0
-    &:after
-      display: block
-      visibility: hidden
-      font-size: 0
-      height: 0;
-      clear: both
-      content: "."
   li
     float: left
     margin: .3em 0 .3em 2.0em
@@ -103,32 +88,39 @@
   position: relative
   cursor: pointer
 
-.menu-item-submenu
-  cursor: pointer
-
 .submenu
   position: absolute
-  top: 1.75em
-  margin: 0 0 0.5em 0
+  top: 28px
+  margin: 0
   padding: 0
-  border: 1px solid gray
   z-index: 2
   background: color-background
   background: rgba(221,221,221,0.90)
-  height: 0
-  visibility: hidden
+  display: none
   transition: height .8s ease-out
-  &.active
-    visibility: visible
-    height: auto
-    overflow: visible
-  li
+  span:first-child
     display: block
+    height: 0.5em
+    &:hover
+      background: color-background !important
+      background: rgba(221,221,221,0.90) !important
+  li
+    display: none
     float: none
     margin: 0
-    padding: 0.25em
+    padding: 0.5em 0.6em
     &:hover
       background: grey
       background: rgba(178,178,178,0.85)
-    &::before
-      content: " → "
+
+.submenu-item > li::before
+  content: " → "
+
+.menu-item,.menu-item-submenu,.menu-item > ul
+  cursor: pointer
+  &:hover > .submenu,li,a
+  &:active > .submenu,li,a
+  &:target > .submenu,li,a
+  &:focus > .submenu,li,a
+    display: block
+

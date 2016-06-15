@@ -1,35 +1,21 @@
-import { h, render, Component } from 'preact';
-import MobileMenu from './components/mobile-menu';
-import Header from './components/header';
+require('./polyfills');
 
-const container = document.querySelector('#container');
-const containerTop = document.querySelector('#container-top');
+const hamburgerMenu = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+const submenuLinks = Array.from(document.querySelectorAll('.menu-item-submenu'));
 
-class ContainerTop extends Component {
-  constructor(props) {
-    super(props);
+hamburgerMenu.addEventListener('click', () => {
+  const navClass = navMenu.className;
+  navMenu.className = (/active/.test(navClass)) ? navClass.replace(/ active/, '') : `${navClass} active`;
+});
 
-    this.state = {
-      isMenuActive: false
-    };
-
-    this.toggleMenuClass = this.toggleMenuClass.bind(this);
-  }
-
-  toggleMenuClass() {
-    this.setState({
-      isMenuActive: !this.state.isMenuActive
-    });
-  }
-
-  render() {
-    return (
-      <div id='container-top'>
-        <MobileMenu toggleMenu={this.toggleMenuClass} />
-        <Header isMenuActive={this.state.isMenuActive} />
-      </div>
-    );
-  }
-}
-
-render(<ContainerTop />, container, containerTop);
+submenuLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const submenu = link.nextElementSibling;
+    if (window.getComputedStyle(hamburgerMenu).getPropertyValue('display') == 'block') {
+      const submenuClass = submenu.className;
+      submenu.className = (/active/.test(submenuClass)) ? submenuClass.replace(/ active/, '') : `${submenuClass} active`;
+    }
+  });
+});

@@ -13,7 +13,8 @@
     <% } %>
   </div>
 <% } else { %>
-  <div id="main">
+  <div id="main-archive">
+    <div class="front-tagcloud"><%- tagcloud({min_font: 14, max_font: 40, color: true, amount: 100, start_color: "#33a6b8", end_color: "#092f35"}) %></div>
     <div class="archive">
       <% page.posts.each(function(item){ %>
         <div class="archived-post">
@@ -40,6 +41,5 @@
         </nav>
       <% } %>
     </div>
-    <div class="front-tagcloud"><%- tagcloud({min_font: 14, max_font: 40, color: true, amount: 100, start_color: "#33a6b8", end_color: "#092f35"}) %></div>
   </div>
 <% } %>

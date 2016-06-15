@@ -71,7 +71,6 @@
       transition: all .2s ease-out
       z-index: 2
     ul
-      display: block
       li
         display: block
         width: 100%
@@ -85,6 +84,7 @@
           text-align: left
 
   .submenu
+    display: none !important
     position: relative
     background: #4f5759
     top: 0
@@ -92,11 +92,12 @@
     a
       padding: 0.3em 1.5em !important
     &.active
-      height: auto
+      display: block !important
       overflow: visible
       transition: all .2s ease-out
-    li
-      &:hover
+    span:first-child
+      display: none
+    li:hover
         background: #4f5759
 
   #header
