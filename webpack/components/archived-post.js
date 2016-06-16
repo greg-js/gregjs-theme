@@ -1,6 +1,6 @@
 import { h, render, Component } from 'preact';
 
-const ArchivedPost = ({ postData, filterPosts }) => {
+const ArchivedPost = ({ postData, setFilter }) => {
 
   const { url, title, date, category, tags } = postData;
 
@@ -12,11 +12,11 @@ const ArchivedPost = ({ postData, filterPosts }) => {
           {formatDate(date)}
         </div>
         <div class='archived-post-metadata-category-div'>
-          Category: <a class='archived-post-metadata-category-item' onClick={ () => filterPosts({category}) }>{category}</a>
+          Category: <a class='archived-post-metadata-category-item' onClick={ () => setFilter({category}) }>{category}</a>
         </div>
         <div class='archived-post-metadata-tags-div'>
         Tags: {tags.map(tag => (
-          <span>#<a class='archived-post-metadata-tags-item' onClick={ () => filterPosts({tag}) }>{tag}</a> </span>
+          <span>#<a class='archived-post-metadata-tags-item' onClick={ () => setFilter({tag}) }>{tag}</a> </span>
         ))}
         </div>
       </div>
