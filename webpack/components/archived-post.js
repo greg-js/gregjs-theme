@@ -4,6 +4,16 @@ const ArchivedPost = ({ postData, setFilter }) => {
 
   const { url, title, date, category, tags } = postData;
 
+  function formatDate(ISOdate) {
+    const date = new Date(ISOdate);
+    const unpaddedMonth = date.getMonth() + 1;
+    const month = (unpaddedMonth < 10) ? `0${unpaddedMonth}` : unpaddedMonth;
+    const unpaddedDay = date.getDate();
+    const day = (unpaddedDay < 10) ? `0${unpaddedDay}` : unpaddedDay;
+
+    return `${date.getFullYear()}-${month}-${day}`;
+  }
+
   return (
     <div class='archived-post'>
       <h2><a href={url}>{title}</a></h2>
@@ -23,13 +33,5 @@ const ArchivedPost = ({ postData, setFilter }) => {
     </div>
   );
 };
-
-function formatDate(ISOdate) {
-  const date = new Date(ISOdate);
-  const unpaddedMonth = date.getMonth() + 1;
-  const month = (unpaddedMonth < 10) ? `0${unpaddedMonth}` : unpaddedMonth;
-
-  return `${date.getFullYear()}-${month}-${date.getDate()}`;
-}
 
 export default ArchivedPost;
