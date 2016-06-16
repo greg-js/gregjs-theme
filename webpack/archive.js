@@ -41,11 +41,13 @@ class Archive extends Component {
   }
 
   componentWillMount() {
-    fetch('https://api.gregjs.com/posts').then(res => {
+    fetch('https://api.gregjs.com/posts/everything').then(res => {
       return res.json();
-    }).then(posts => {
+    }).then(json => {
       this.setState({
-        posts
+        posts: json.posts,
+        categories: json.categories,
+        tags: json.tags
       });
 
       // filter category or tag based on location
@@ -72,7 +74,7 @@ class Archive extends Component {
         <p>
           <em>I'm currently working on this, apologies for the somewhat wonky functionality right now. Expect an update by June 16/17.</em>
         </p>
-        {this.state.posts.length ? this.renderPosts(this.state.posts) : null}
+        {this.state.posts.length ? this.renderPosts(this.state.posts) : <div id='loading'></div>}
       </div>
     );
   }
