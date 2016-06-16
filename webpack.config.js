@@ -2,11 +2,11 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: './themes/apollo-like/webpack/app.js',
-    archive: './themes/apollo-like/webpack/archive.js'
+    app: './themes/gregjs-theme/webpack/app.js',
+    archive: './themes/gregjs-theme/webpack/archive.js'
   },
   output: {
-    path: './themes/apollo-like/source/js',
+    path: './themes/gregjs-theme/source/js',
     filename: '[name].js'
   },
   module: {
