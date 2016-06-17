@@ -2,8 +2,8 @@ import { h, render, Component } from 'preact';
 import ArchivedPost from './components/archived-post';
 import FilterOptions from './components/filter-options';
 
-require('es6-promise').polyfill();
-require('universal-fetch');
+require('es6-promise').polyfill();  // eslint-disable-line
+require('universal-fetch');  // eslint-disable-line
 
 const mainArchive = document.querySelector('#main-archive');
 const archive = document.querySelector('.archive');
@@ -11,6 +11,7 @@ const archive = document.querySelector('.archive');
 class Archive extends Component {
   constructor(props) {
     super(props);
+    const loc = window.location.pathname;
 
     this.state = {
       posts: [],
@@ -21,12 +22,20 @@ class Archive extends Component {
         tags: [],
         maxDate: '',
         minDate: '',
-        searchTerm: ''
-      },
-      location: window.location.pathname
+        searchTerms: []
+      }
     };
 
     this.setFilter = this.setFilter.bind(this);
+
+    // filter category or tag based on location
+    if (/categories/.test(loc)) {
+      const category = loc.replace(/\/|categories/g, '');
+      this.state.activeFilters.categories = [category];
+    } else if (/tags/.test(loc)) {
+      const tag = loc.replace(/\/|tags/g, '').replace(/\-/g, ' ');
+      this.state.activeFilters.categories = [tag];
+    }
   }
 
   setFilter({category, tag, minDate, maxDate, searchTerm}) {
@@ -50,23 +59,35 @@ class Archive extends Component {
           tags: tags.includes(tag) ? tags.slice(0, tags.indexOf(tag)).concat(tags.slice(tags.indexOf(tag) + 1)) : [...tags, tag]
         }
       });
-    } else {
+    } else if (searchTerm) {
+      const searchTerms = this.state.activeFilters.searchTerms;
 
-      // overwrite dates and search terms no matter what
+      // if the new term already exists, get rid of it, else add it to the filters
       this.setState({
         activeFilters: {
           ...this.state.activeFilters,
-          maxDate,
-          minDate,
-          searchTerm
+          searchTerms: searchTerms.includes(searchTerm) ? searchTerms.slice(0, searchTerms.indexOf(searchTerm)).concat(searchTerms.slice(searchTerms.indexOf(searchTerm) + 1)) : [...searchTerms, searchTerm]
+        }
+      });
+    // overwrite dates no matter what
+    } else if (minDate) {
+      this.setState({
+        activeFilters: {
+          ...this.state.activeFilters,
+          minDate
+        }
+      });
+    } else if (maxDate) {
+      this.setState({
+        activeFilters: {
+          ...this.state.activeFilters,
+          maxDate
         }
       });
     }
   }
 
   componentWillMount() {
-    const loc = window.location.pathname;
-
     // populate posts from api
     fetch('https://api.gregjs.com/posts/everything').then(res => {
       return res.json();
@@ -76,25 +97,15 @@ class Archive extends Component {
         categories: json.categories,
         tags: json.tags
       });
-
-      // filter category or tag based on location
-      if (/categories/.test(loc)) {
-        const category = loc.replace(/\/|categories/g, '');
-        this.setFilter({category});
-      } else if (/tags/.test(loc)) {
-        const tag = loc.replace(/\/|tags/g, '').replace(/\-/g, ' ');
-        this.setFilter({tag});
-      }
     });
   }
 
   renderPosts(posts) {
     function filterPosts(filters, items) {
-      console.log(filters);
       return items.filter(item => {
         // tags
         if (filters.tags.length) {
-          return filters.tags.some(tag => {
+          return filters.tags.every(tag => {
             return item.tags.includes(tag);
           });
         }
@@ -108,22 +119,22 @@ class Archive extends Component {
         }
         return items;
       }).filter(item => {
-        // maxDate
-        if (filters.maxDate.length) {
-          return (new Date(item.date)).getTime() <= (new Date(filters.maxDate)).getTime();
-        }
-        return item;
-      }).filter(item => {
         // minDate
         if (filters.minDate.length) {
           return (new Date(item.date)).getTime() >= (new Date(filters.minDate)).getTime();
         }
         return item;
       }).filter(item => {
+        // maxDate
+        if (filters.maxDate.length) {
+          return (new Date(item.date)).getTime() <= (new Date(filters.maxDate)).getTime();
+        }
+        return item;
+      }).filter(item => {
         // searchTerm
-        if (filters.searchTerm.length) {
-          return filters.searchTerm.split(/[ \-]/).every(term => {
-            return (new RegExp(term)).test(item.title);
+        if (filters.searchTerms.length) {
+          return filters.searchTerms.every(term => {
+            return (new RegExp(term, 'gi')).test(item.title);
           });
         }
         return item;
@@ -139,11 +150,15 @@ class Archive extends Component {
   render() {
     return (
       <div class='archive'>
-        <p>
-          <em>I'm currently working on this, apologies for the somewhat wonky functionality right now. Expect an update by June 16/17.</em>
-        </p>
-        <FilterOptions setFilter={this.setFilter} />
-        {this.state.posts.length ? this.renderPosts(this.state.posts) : <div id='loading'></div>}
+        <FilterOptions
+          setFilter={this.setFilter}
+          tags={this.state.tags}
+          categories={this.state.categories}
+          activeFilters={this.state.activeFilters}
+        />
+        <div class='archived-posts'>
+          {this.state.posts.length ? this.renderPosts(this.state.posts) : <div id='loading'></div>}
+        </div>
       </div>
     );
   }

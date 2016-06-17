@@ -55,3 +55,59 @@
 .front-tagcloud
   text-align: center
   margin-bottom: 2em
+
+.active-filters-div
+  margin-bottom: 2.5em
+  padding: 0.5em
+  margin: 0.5em
+  background: #ccc
+  border-radius: 1em
+  .active-tags-div,.active-cats-div,.active-search-div,.active-date-div
+    margin: 0.5em 0.25em
+    text-align: center
+  .active-tag,.active-category,.active-date,.active-search
+    padding: 0.1em 0.3em
+    border-radius: 0.5em
+    margin-right: 0.3em
+    cursor: pointer
+    background-color: white
+  .active-tag
+    font-size: 90%
+    padding: 0.1em 0.3em
+    border-radius: 0.5em
+    margin-right: 0.3em
+    cursor: pointer
+    color: color-link
+    &::before
+      content: '#'
+      color: color-default
+  .active-category
+    color: darkblue
+    font-weight: bold
+  .active-date
+    background: lightyellow
+  .active-search
+    color: black
+    font-weight: bold
+    &::before
+    &::after
+      color: #ccc
+      font-weight: normal
+    &::before
+      content: '/'
+    &::after
+      content: '/gi'
+
+.search-bar-div
+  margin: 1em 2em
+  .search-bar
+    width: 100%
+    padding: 0.5em 0
+    text-align: center
+    font-size: 125%
+    border-radius: 1em
+    border: none
+    color: white
+    background-color: gray
+    &:focus
+      border: none
