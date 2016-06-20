@@ -1,5 +1,3 @@
-require('./polyfills');
-
 const hamburgerMenu = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 const submenuLinks = Array.from(document.querySelectorAll('.menu-item-submenu'));

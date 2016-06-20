@@ -2,7 +2,7 @@ import { h, render, Component } from 'preact';
 import SearchBar from './search-bar';
 import formatDate from '../helpers/format-date';
 
-const FilterOptions = ({ setFilter, tags, categories, activeFilters }) => {
+const FilterOptions = ({ setFilter, tags, categories, activeFilters, total, filteredTotal }) => {
 
   function renderActiveFilters(filters) {
     const activeTags = filters.tags.map(tag => (
@@ -26,6 +26,11 @@ const FilterOptions = ({ setFilter, tags, categories, activeFilters }) => {
         {!filters.categories.length ? '' : <div class='active-cats-div'>{activeCategories}</div>}
         {!filters.tags.length ? '' : <div class='active-tags-div'>{activeTags}</div>}
         {!filters.minDate.length && !filters.maxDate.length ? '' : <div class='active-date-div'>{activeDate}</div>}
+      {total === filteredTotal ? null :
+        <p class='archived-posts-count'>
+          Showing {filteredTotal} of {total} posts
+        </p>
+      }
       </div>
     );
   }

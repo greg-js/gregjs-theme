@@ -2,9 +2,6 @@ import { h, render, Component } from 'preact';
 import ArchivedPost from './components/archived-post';
 import FilterOptions from './components/filter-options';
 
-require('es6-promise').polyfill();  // eslint-disable-line
-require('universal-fetch');  // eslint-disable-line
-
 const mainArchive = document.querySelector('#main-archive');
 const archive = document.querySelector('.archive');
 
@@ -14,6 +11,8 @@ class Archive extends Component {
     const loc = window.location.pathname;
 
     this.state = {
+      total: null,
+      filteredTotal: null,
       posts: [],
       categories: [],
       tags: [],
@@ -36,6 +35,20 @@ class Archive extends Component {
       const tag = loc.replace(/\/|tags/g, '').replace(/\-/g, ' ');
       this.state.activeFilters.categories = [tag];
     }
+  }
+
+  componentWillMount() {
+    // populate posts from api
+    fetch('https://api.gregjs.com/posts/everything').then(res => {
+      return res.json();
+    }).then(json => {
+      this.setState({
+        total: json.posts.length,
+        posts: json.posts,
+        categories: json.categories,
+        tags: json.tags
+      });
+    });
   }
 
   setFilter({category, tag, minDate, maxDate, searchTerm}) {
@@ -87,20 +100,9 @@ class Archive extends Component {
     }
   }
 
-  componentWillMount() {
-    // populate posts from api
-    fetch('https://api.gregjs.com/posts/everything').then(res => {
-      return res.json();
-    }).then(json => {
-      this.setState({
-        posts: json.posts,
-        categories: json.categories,
-        tags: json.tags
-      });
-    });
-  }
-
   renderPosts(posts) {
+    const filteredPosts = filterPosts(this.state.activeFilters, posts);
+
     function filterPosts(filters, items) {
       return items.filter(item => {
         // tags
@@ -141,8 +143,12 @@ class Archive extends Component {
       })
     }
 
+    this.setState({
+      filteredTotal: filteredPosts.length
+    });
+
     // apply filters to posts and render
-    return filterPosts(this.state.activeFilters, posts).map(post => (
+    return filteredPosts.map(post => (
       <ArchivedPost postData={post} setFilter={this.setFilter} />
     ));
   }
@@ -155,6 +161,8 @@ class Archive extends Component {
           tags={this.state.tags}
           categories={this.state.categories}
           activeFilters={this.state.activeFilters}
+          total={this.state.total}
+          filteredTotal={this.state.filteredTotal}
         />
         <div class='archived-posts'>
           {this.state.posts.length ? this.renderPosts(this.state.posts) : <div id='loading'></div>}
