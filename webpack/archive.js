@@ -1,6 +1,7 @@
 import { h, render, Component } from 'preact';
 import ArchivedPost from './components/archived-post';
 import FilterOptions from './components/filter-options';
+import filterPosts from './helpers/filter-posts';
 
 const mainArchive = document.querySelector('#main-archive');
 const archive = document.querySelector('.archive');
@@ -8,12 +9,10 @@ const archive = document.querySelector('.archive');
 class Archive extends Component {
   constructor(props) {
     super(props);
-    const loc = window.location.pathname;
 
     this.state = {
-      total: null,
-      filteredTotal: null,
       posts: [],
+      filteredPosts: [],
       categories: [],
       tags: [],
       activeFilters: {
@@ -26,29 +25,34 @@ class Archive extends Component {
     };
 
     this.setFilter = this.setFilter.bind(this);
-
-    // filter category or tag based on location
-    if (/categories/.test(loc)) {
-      const category = loc.replace(/\/|categories/g, '');
-      this.state.activeFilters.categories = [category];
-    } else if (/tags/.test(loc)) {
-      const tag = loc.replace(/\/|tags/g, '').replace(/\-/g, ' ');
-      this.state.activeFilters.categories = [tag];
-    }
+    this.renderPosts = this.renderPosts.bind(this);
   }
 
   componentWillMount() {
+    const loc = window.location.pathname;
+
     // populate posts from api
     fetch('https://api.gregjs.com/posts/everything').then(res => {
       return res.json();
     }).then(json => {
       this.setState({
-        total: json.posts.length,
         posts: json.posts,
         categories: json.categories,
         tags: json.tags
       });
+
+      // on initial render, filter category or tag based on location in address bar
+      if (/categories/.test(loc)) {
+        const category = loc.replace(/\/|categories/g, '');
+        this.setFilter({category});
+      } else if (/tags/.test(loc)) {
+        const tag = loc.replace(/\/|tags/g, '').replace(/\-/g, ' ');
+        this.setFilter({tag});
+      } else {
+        this.setFilter({});
+      }
     });
+
   }
 
   setFilter({category, tag, minDate, maxDate, searchTerm}) {
@@ -98,62 +102,21 @@ class Archive extends Component {
         }
       });
     }
+
+    this.setState({
+      filteredPosts: filterPosts(this.state.activeFilters, this.state.posts)
+    });
   }
 
   renderPosts(posts) {
-    const filteredPosts = filterPosts(this.state.activeFilters, posts);
-
-    function filterPosts(filters, items) {
-      return items.filter(item => {
-        // tags
-        if (filters.tags.length) {
-          return filters.tags.every(tag => {
-            return item.tags.includes(tag);
-          });
-        }
-        return items;
-      }).filter(item => {
-        // categories
-        if (filters.categories.length) {
-          return filters.categories.some(category => {
-            return item.category == category;
-          });
-        }
-        return items;
-      }).filter(item => {
-        // minDate
-        if (filters.minDate.length) {
-          return (new Date(item.date)).getTime() >= (new Date(filters.minDate)).getTime();
-        }
-        return item;
-      }).filter(item => {
-        // maxDate
-        if (filters.maxDate.length) {
-          return (new Date(item.date)).getTime() <= (new Date(filters.maxDate)).getTime();
-        }
-        return item;
-      }).filter(item => {
-        // searchTerm
-        if (filters.searchTerms.length) {
-          return filters.searchTerms.every(term => {
-            return (new RegExp(term, 'gi')).test(item.title);
-          });
-        }
-        return item;
-      })
-    }
-
-    this.setState({
-      filteredTotal: filteredPosts.length
-    });
-
-    // apply filters to posts and render
-    return filteredPosts.map(post => (
+    return posts.map(post => (
       <ArchivedPost postData={post} setFilter={this.setFilter} />
     ));
   }
 
   render() {
+    const { filteredPosts } = this.state;
+
     return (
       <div class='archive'>
         <FilterOptions
@@ -161,11 +124,11 @@ class Archive extends Component {
           tags={this.state.tags}
           categories={this.state.categories}
           activeFilters={this.state.activeFilters}
-          total={this.state.total}
-          filteredTotal={this.state.filteredTotal}
+          total={this.state.posts.length}
+          filteredTotal={this.state.filteredPosts.length}
         />
         <div class='archived-posts'>
-          {this.state.posts.length ? this.renderPosts(this.state.posts) : <div id='loading'></div>}
+          {filteredPosts.length ? this.renderPosts(filteredPosts) : <div id='loading'></div>}
         </div>
       </div>
     );

@@ -26,11 +26,9 @@ const FilterOptions = ({ setFilter, tags, categories, activeFilters, total, filt
         {!filters.categories.length ? '' : <div class='active-cats-div'>{activeCategories}</div>}
         {!filters.tags.length ? '' : <div class='active-tags-div'>{activeTags}</div>}
         {!filters.minDate.length && !filters.maxDate.length ? '' : <div class='active-date-div'>{activeDate}</div>}
-      {total === filteredTotal ? null :
         <p class='archived-posts-count'>
           Showing {filteredTotal} of {total} posts
         </p>
-      }
       </div>
     );
   }
