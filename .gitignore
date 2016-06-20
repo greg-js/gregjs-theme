@@ -5,5 +5,5 @@ debug.log
 node_modules/
 public/
 .deploy/
-layout/cv.ejs
-layout/_partial/cv.ejs
+source/js/app.js
+source/js/archive.js
