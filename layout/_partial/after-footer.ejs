@@ -1,11 +1,9 @@
 <script src='<%- config.root %>js/preact.min.js'></script>
 
-<% if (config.disqus_shortname){ %>
+<% if (config.disqus_shortname && page.permalink){ %>
   <script>
     var disqus_shortname = '<%= config.disqus_shortname %>';
-    <% if (page.permalink){ %>
     var disqus_url = '<%= page.permalink %>';
-    <% } %>
     (function(){
       var dsq = document.createElement('script');
       dsq.type = 'text/javascript';
@@ -18,8 +16,8 @@
 
 <% if (theme.webpack){ %>
   <script src='<%- config.root %>js/app.js' async></script>
-<% } %>
 
-<% if (is_archive() || is_category() || is_tag()){ %>
-  <script src='<%- config.root %>js/archive.js' async></script>
+  <% if (is_archive() || is_category() || is_tag()){ %>
+    <script src='<%- config.root %>js/archive.js' async></script>
+  <% } %>
 <% } %>
