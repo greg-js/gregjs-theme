@@ -5,11 +5,14 @@ class SearchBar extends Component {
     super(props);
 
     this.state = {
-      value: ''
+      value: '',
+      focused: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
   }
 
   handleChange(event) {
@@ -44,16 +47,33 @@ class SearchBar extends Component {
     }
   }
 
+  handleFocus(event) {
+    event.preventDefault();
+    this.setState({
+      focused: true
+    });
+    this.base.scrollIntoView();
+  }
+
+  handleBlur(event) {
+    event.preventDefault();
+    this.setState({
+      focused: false
+    });
+  }
+
   render() {
     return (
       <div class='search-bar-div'>
-        <form onSubmit={this.handleSubmit}>
+        <form id='searchForm' onSubmit={this.handleSubmit}>
           <input
             class='search-bar'
             type='text'
             value={this.state.value}
             onChange={this.handleChange}
-            placeholder='Click on or type a category, tag or keyword(s)'
+            placeholder={(this.state.focused) ? '' : 'Click on or type a category, tag or keyword(s)'}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
           />
         </form>
       </div>
