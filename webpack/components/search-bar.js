@@ -52,7 +52,6 @@ class SearchBar extends Component {
     this.setState({
       focused: true
     });
-    this.base.scrollIntoView();
   }
 
   handleBlur(event) {
