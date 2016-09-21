@@ -7,3 +7,4 @@ public/
 .deploy/
 source/js/app.js
 source/js/archive.js
+.tern-port
