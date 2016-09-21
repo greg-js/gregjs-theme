@@ -16,3 +16,12 @@ webpack: true
 google_analytics: UA-69518818-1
 favicon: /images/favicon.png
 highlight_theme: "hybrid"
+
+# Sharing (true/false)
+share: true
+share_twitter: true
+share_facebook: true
+share_googleplus: true
+share_email: true
+share_reddit: true
+share_linkedin: true
