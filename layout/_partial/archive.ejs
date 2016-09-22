@@ -15,30 +15,34 @@
 <% } else { %>
   <div id="main-archive">
     <div class="archive">
-      <% page.posts.each(function(item){ %>
-        <div class="archived-post">
-          <h2><a href="<%- item.permalink %>"><%- item.title %></a></h2>
-          <div class="archived-post-metadata">
-            <div class="archived-post-metadata-date"><%- item.date.format('YYYY-MM-DD') %></div>
-            <div class="archived-post-metadata-category-div">Category: <a href="/categories/<%- item.categories.data[0].name %>" class="archived-post-metadata-category-item"><%= item.categories.data[0].name %></a></div>
-            <div class="archived-post-metadata-tags-div">
-              Tags:
-              <% item.tags.data.forEach(function(tag) { %>
-                #<a href="<%- tag.permalink %>" class="archived-post-metadata-tags-item"><%- tag.name %></a>
-              <% }); %>
+      <div class="archived-posts">
+        <% page.posts.each(function(item){ %>
+          <div class="archived-post">
+            <div class="archived-post-content">
+              <h2><a href="<%- item.permalink %>"><%- item.title %></a></h2>
+              <div class="archived-post-metadata">
+                <div class="archived-post-metadata-category-div">Category: <a href="/categories/<%- item.categories.data[0].name %>" class="archived-post-metadata-category-item"><%= item.categories.data[0].name %></a></div>
+                <div class="archived-post-metadata-tags-div">
+                  Tags:
+                  <% item.tags.data.forEach(function(tag) { %>
+                    #<a href="<%- tag.permalink %>" class="archived-post-metadata-tags-item"><%- tag.name %></a>
+                  <% }); %>
+                </div>
+                <div class="archived-post-metadata-date"><%- item.date.format('YYYY-MM-DD') %></div>
+              </div>
             </div>
           </div>
-        </div>
-      <% }); %>
-
-      <% if (page.total > 1){ %>
-        <nav id="page-nav">
-          <%- paginator({
-            prev_text: '&laquo; Prev',
-            next_text: 'Next &raquo;'
-          }) %>
-        </nav>
-      <% } %>
+        <% }); %>
+      </div>
     </div>
+
+    <% if (page.total > 1){ %>
+      <nav id="page-nav">
+        <%- paginator({
+          prev_text: '&laquo; Prev',
+          next_text: 'Next &raquo;'
+        }) %>
+      </nav>
+    <% } %>
   </div>
 <% } %>

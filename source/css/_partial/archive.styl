@@ -29,33 +29,44 @@
   .next
     min-width: 5em
 
+.archived-posts
+  display: flex
+  flex-flow: row wrap
+  justify-content: center
+
 .archived-post
-  padding: 0.5em
-  margin: 0.5em
   border-radius: 15px
   background: #fff
+  margin: 0.25em
+  flex: 1
+
+  .archived-post-content
+    padding: 0.5em
+    h2
+      min-width: 240px
 
   a
     cursor: pointer
 
   .archived-post-metadata
-    font-size: 90%
-    padding-left: 0.25em
-    padding-right: 0.5em
+    font-size: 80%
+    color: darkgray
+    position: relative
+    margin: 0.25em
 
     .archived-post-metadata-date
-      float: right
-      color: darkgray
-      font-family: font-mono
+      position: absolute
+      top: 0
+      right: 0
 
     .archived-post-metadata-category-div
     .archived-post-metadata-tags-div
-      color:darkgray
-      font-size: 85%
+      color: darkgray
 
     .archived-post-metadata-tags-item
     .archived-post-metadata-category-item
       font-family: font-mono
+      font-size: 90%
 
 .front-tagcloud
   text-align: center
