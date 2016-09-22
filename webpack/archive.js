@@ -52,7 +52,6 @@ class Archive extends Component {
         this.setFilter({});
       }
     });
-
   }
 
   setFilter({category, tag, minDate, maxDate, searchTerm}) {
