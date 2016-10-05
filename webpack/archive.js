@@ -134,4 +134,21 @@ class Archive extends Component {
   }
 }
 
-render(<Archive />, mainArchive, archive);
+if (isNotIE()) {
+  // proceed with preact components
+  render(<Archive />, mainArchive, archive);
+} else {
+  // turn off flexbox
+  document.querySelector('.archived-posts').style.display = 'block';
+}
+
+/**
+ * Detect if the browser is any version of internet explorer
+ */
+function isNotIE() {
+  var msie = parseInt((/msie (\d+)/.exec(navigator.userAgent.toLowerCase()) || [])[1]);
+  if (isNaN(msie)) {
+    msie = parseInt((/trident\/.*; rv:(\d+)/.exec(navigator.userAgent.toLowerCase()) || [])[1]);
+  }
+  return isNaN(msie);
+}

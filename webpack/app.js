@@ -1,6 +1,6 @@
 const hamburgerMenu = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
-const submenuLinks = Array.from(document.querySelectorAll('.menu-item-submenu'));
+const submenuLinks = Array.prototype.slice.call(document.querySelectorAll('.menu-item-submenu'));
 
 hamburgerMenu.addEventListener('click', () => {
   const navClass = navMenu.className;
